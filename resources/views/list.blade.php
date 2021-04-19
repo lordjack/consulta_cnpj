@@ -25,6 +25,10 @@
                             </div>
                         </div>
                     </form>
+                    <p>
+                        <strong> Coloquei um delay de 20 segundos para cada busca de registro, devido a limitação do
+                            site da Receita Federal</strong>
+                    </p>
                     <br>
                     <table class="table table-hover">
                         <thead>

@@ -30,7 +30,7 @@ class CNPJController extends Controller
         $objItems = [];
 
         foreach ($objTurma as $item) {
-            sleep(2);
+            sleep(20);
             $promise = Http::async()->get($this->url . str_pad($item->cnpj, 14, "0", STR_PAD_LEFT))->then(
                 function ($response) {
                     return json_decode(($response->getBody()->getContents()));
