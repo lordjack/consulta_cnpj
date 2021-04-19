@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\CNPJModel;
 use App\Models\CNPJModel as ModelsCNPJModel;
+use GuzzleHttp\Promise\Promise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -30,8 +31,9 @@ class CNPJController extends Controller
         $objItems = [];
 
         foreach ($objTurma as $item) {
-            sleep(20);
+
             $promise = Http::async()->get($this->url . str_pad($item->cnpj, 14, "0", STR_PAD_LEFT))->then(
+
                 function ($response) {
                     return json_decode(($response->getBody()->getContents()));
                 },
@@ -40,6 +42,9 @@ class CNPJController extends Controller
                 }
             );
             $response = $promise->wait();
+            //   $response = Promise\Utils::settle($promise)->wait();
+
+            // sleep(5);
             $objItems[] = $response;
         }
 
