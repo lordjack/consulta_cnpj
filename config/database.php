@@ -4,6 +4,7 @@ use Illuminate\Support\Str;
 
 
 //mysql://bd6561dfed1616:be72b4af@us-cdbr-east-03.cleardb.com/heroku_d74ce041f9385ed?reconnect=true
+$DATABASE_URL = parse_url("mysql://bd6561dfed1616:be72b4af@us-cdbr-east-03.cleardb.com/heroku_d74ce041f9385ed?reconnect=true");
 
 return [
 
@@ -49,11 +50,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => "fdb30.awardspace.net",
+            'host' => $DATABASE_URL["host"],
             'port' => "3306",
-            'database' => "3813385_cnpjconsulta",
-            'username' => "3813385_cnpjconsulta",
-            'password' => "SitesDB@456",
+            'database' => ltrim($DATABASE_URL["path"], "/"),
+            'username' => $DATABASE_URL["user"],
+            'password' =>  $DATABASE_URL["pass"],
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
