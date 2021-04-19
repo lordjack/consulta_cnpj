@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Str;
 
+
+//mysql://bd6561dfed1616:be72b4af@us-cdbr-east-03.cleardb.com/heroku_d74ce041f9385ed?reconnect=true
+
 return [
 
     /*
@@ -46,6 +49,25 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
+            'host' => "fdb30.awardspace.net",
+            'port' => "3306",
+            'database' => "3813385_cnpjconsulta",
+            'username' => "3813385_cnpjconsulta",
+            'password' => "SitesDB@456",
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+        /* 'mysql' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -61,7 +83,7 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
-        ],
+        ], */
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -123,7 +145,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
